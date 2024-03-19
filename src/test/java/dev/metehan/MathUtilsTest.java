@@ -15,6 +15,13 @@ class MathUtilsTest {
     }
 
     @Test
+    void testDivide() {
+        MathUtils mathUtils = new MathUtils();
+        assertThrows(ArithmeticException.class, () -> mathUtils.divide(1,0),
+                "should throw exception when divisor is zero");
+    }
+
+    @Test
     void testCalculateCircleArea() {
         MathUtils mathUtils = new MathUtils();
         assertEquals((Math.PI * Math.pow(10, 2)), mathUtils.calculateCircleArea(10),
