@@ -10,8 +10,9 @@ class MathUtilsTest {
     MathUtils mathUtils;
 
     @BeforeEach
-    void init() {
+    void init(TestInfo testInfo, TestReporter testReporter) {
         mathUtils = new MathUtils();
+        testReporter.publishEntry("Running " + testInfo.getDisplayName() + " with tags " + testInfo.getTags());
     }
 
     @Nested
@@ -53,6 +54,7 @@ class MathUtilsTest {
     }
 
     @RepeatedTest(3)
+    @DisplayName("calculate circle area method")
     @Tag("Circle")
     void testCalculateCircleArea(RepetitionInfo repetitionInfo) {
         switch (repetitionInfo.getCurrentRepetition()) {
