@@ -16,6 +16,7 @@ class MathUtilsTest {
 
     @Nested
     @DisplayName("add method")
+    @Tag("Math")
     class AddTest {
         @Test
         @DisplayName("for two positive numbers")
@@ -34,6 +35,7 @@ class MathUtilsTest {
 
     @Test
     @DisplayName("multiply method")
+    @Tag("Math")
     void testMultiply() {
         assertAll(
                 () -> assertEquals(4, mathUtils.multiply(2, 2)),
@@ -43,12 +45,15 @@ class MathUtilsTest {
     }
 
     @Test
+    @DisplayName("divide method")
+    @Tag("Math")
     void testDivide() {
         assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0),
                 "should throw exception when divisor is zero");
     }
 
     @RepeatedTest(3)
+    @Tag("Circle")
     void testCalculateCircleArea(RepetitionInfo repetitionInfo) {
         switch (repetitionInfo.getCurrentRepetition()) {
             case 1:
