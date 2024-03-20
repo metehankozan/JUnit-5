@@ -1,9 +1,6 @@
 package dev.metehan;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,10 +48,24 @@ class MathUtilsTest {
                 "should throw exception when divisor is zero");
     }
 
-    @Test
-    void testCalculateCircleArea() {
-        assertEquals((Math.PI * Math.pow(10, 2)), mathUtils.calculateCircleArea(10),
-                "should return circle area");
+    @RepeatedTest(3)
+    void testCalculateCircleArea(RepetitionInfo repetitionInfo) {
+        switch (repetitionInfo.getCurrentRepetition()) {
+            case 1:
+                assertEquals((Math.PI * Math.pow(10, 2)), mathUtils.calculateCircleArea(10),
+                        "should return circle area");
+                break;
+            case 2:
+                assertEquals((Math.PI * Math.pow(20, 2)), mathUtils.calculateCircleArea(20),
+                        "should return circle area");
+                break;
+            case 3:
+                assertEquals((Math.PI * Math.pow(30, 2)), mathUtils.calculateCircleArea(30),
+                        "should return circle area");
+                break;
+            default:
+                fail();
+        }
     }
 
 }
