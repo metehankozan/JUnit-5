@@ -1,10 +1,13 @@
 package dev.metehan;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("When running MathUtils")
 class MathUtilsTest {
 
     MathUtils mathUtils;
@@ -14,11 +17,20 @@ class MathUtilsTest {
         mathUtils = new MathUtils();
     }
 
-    @Test
-    void testAdd() {
-        int expected = 2;
-        int actual = mathUtils.add(1, 1);
-        assertEquals(expected, actual, "the add method should add 2 numbers");
+    @Nested
+    @DisplayName("add method")
+    class AddTest {
+        @Test
+        @DisplayName("for two positive numbers")
+        void testAddPositive() {
+            assertEquals(2, mathUtils.add(1, 1), "should return the right sum");
+        }
+
+        @Test
+        @DisplayName("for two negative numbers")
+        void testAddNegative() {
+            assertEquals(-2, mathUtils.add(-1, -1), "should return the right sum");
+        }
     }
 
     @Test
