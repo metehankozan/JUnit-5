@@ -34,6 +34,16 @@ class MathUtilsTest {
     }
 
     @Test
+    @DisplayName("multiply method")
+    void testMultiply() {
+        assertAll(
+                () -> assertEquals(4, mathUtils.multiply(2,2)),
+                () -> assertEquals(0, mathUtils.multiply(2,0)),
+                () -> assertEquals(-2, mathUtils.multiply(2,-1))
+        );
+    }
+
+    @Test
     void testDivide() {
         assertThrows(ArithmeticException.class, () -> mathUtils.divide(1,0),
                 "should throw exception when divisor is zero");
