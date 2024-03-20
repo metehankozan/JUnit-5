@@ -29,7 +29,9 @@ class MathUtilsTest {
         @Test
         @DisplayName("for two negative numbers")
         void testAddNegative() {
-            assertEquals(-2, mathUtils.add(-1, -1), "should return the right sum");
+            int expected = -2;
+            int actual = mathUtils.add(-1, -1);
+            assertEquals(expected, actual, () -> "should have returned " + expected + " but returned " + actual);
         }
     }
 
@@ -37,15 +39,15 @@ class MathUtilsTest {
     @DisplayName("multiply method")
     void testMultiply() {
         assertAll(
-                () -> assertEquals(4, mathUtils.multiply(2,2)),
-                () -> assertEquals(0, mathUtils.multiply(2,0)),
-                () -> assertEquals(-2, mathUtils.multiply(2,-1))
+                () -> assertEquals(4, mathUtils.multiply(2, 2)),
+                () -> assertEquals(0, mathUtils.multiply(2, 0)),
+                () -> assertEquals(-2, mathUtils.multiply(2, -1))
         );
     }
 
     @Test
     void testDivide() {
-        assertThrows(ArithmeticException.class, () -> mathUtils.divide(1,0),
+        assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0),
                 "should throw exception when divisor is zero");
     }
 
